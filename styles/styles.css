@@ -180,10 +180,9 @@ body {
 .theme-switch input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 18px;
-    height: 18px;
+    width: 8px;
+    height: 20px;
     background: var(--link-color);
-    border-radius: 50%;
     cursor: pointer;
     transition: background 0.3s;
 }
