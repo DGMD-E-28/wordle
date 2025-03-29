@@ -1,0 +1,411 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Base styles for light, dark, and Harvard modes */
+:root {
+    --bg-color: #ffffff;
+    --text-color: #373737;
+    --primary-color: #2f7a46;
+    --link-color: #44b566;
+    --link-hover-color: #2f7a46;
+    --square-border-color: #373737;
+    --used-letters-bg: #f0f0f0;
+    --used-letters-text: #373737;
+    --used-letters-border: #2f7a46;
+    --transition-speed: 0.3s;
+}
+
+body.dark-mode {
+    --bg-color: #222222;
+    --text-color: #f1f1f1;
+    --primary-color: #1a512d;
+    --link-color: #3e9b5f;
+    --link-hover-color: #2f7a46;
+    --square-border-color: #f1f1f1;
+    --used-letters-bg: #333333;
+    --used-letters-text: #f1f1f1;
+    --used-letters-border: #3e9b5f;
+}
+
+body.harvard-mode {
+    --bg-color: #ffffff;
+    --text-color: #222222;
+    --primary-color: #4e4e4e;
+    --link-color: #A51C30;
+    --link-hover-color: #8B0000;
+    --square-border-color: #D4AF37;
+    --used-letters-bg: #ffffff;
+    --used-letters-text: #222222;
+    --used-letters-border: #A51C30;
+}
+
+
+/* Ensure the body has enough space for content */
+body {
+    font-family: Montserrat, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding-top: 180px;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* harvard Icon */
+.harvard-icon {
+    height: 24px;
+    vertical-align: middle;
+}
+
+/* Used Letter Indicator Styling */
+.used-letters-box {
+    margin: 20px auto;
+    padding: 10px 20px;
+    border: 2px solid var(--used-letters-border);
+    border-radius: 12px;
+    background-color: var(--used-letters-bg);
+    color: var(--used-letters-text);
+    font-size: 18px;
+    min-height: 50px;
+    max-width: 80vw;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: all var(--transition-speed);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease;
+}
+
+/* Enhanced Statistics Box Styling */
+.statistics-box {
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid var(--used-letters-border);
+    border-radius: 12px;
+    background-color: var(--used-letters-bg);
+    color: var(--used-letters-text);
+    font-size: 18px;
+    min-height: 60px;
+    max-width: 80vw;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: all var(--transition-speed);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.6s ease;
+}
+
+/* Animation for Flashing Effect when Stats are Updated */
+@keyframes statsFlash {
+    0% { background-color: var(--link-hover-color); color: white; }
+    100% { background-color: var(--used-letters-bg); color: var(--used-letters-text); }
+}
+
+.statistics-box.updated {
+    animation: statsFlash 0.5s ease;
+}
+
+/* Add a smooth slide-in effect */
+@keyframes slideIn {
+    0% { transform: translateY(-30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+.statistics-box {
+    animation: slideIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Navigation Bar */
+.nav-bar {
+    background-color: var(--primary-color);
+    display: flex;
+    height: 180px;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    transition: height var(--transition-speed);
+}
+
+
+/* Ensure logo is properly sized */
+.logo {
+    max-width: 150px;
+    height: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all var(--transition-speed);
+}
+
+/* Theme Switch Container */
+.theme-container {
+    position: absolute;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Three-position slider */
+.theme-switch input[type="range"] {
+    -webkit-appearance: none;
+    width: 50px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: background 0.3s;
+}
+
+/* Slider Thumb */
+.theme-switch input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--link-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+/* Different background colors based on mode */
+body.dark-mode .theme-switch input[type="range"],
+body.harvard-mode .theme-switch input[type="range"] {
+    background: var(--bg-color);
+}
+
+/* Ensure logo link does not affect layout */
+.nav-bar a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+
+/* Slider Track */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    background-color: var(--square-border-color);
+    transition: background-color 0.3s;
+}
+
+/* Slider Knob */
+.slider:before {
+    position: absolute;
+    content: "";
+    background-color: var(--link-color);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+/* Dark Mode Toggle */
+input:checked + .slider {
+    background-color: var(--square-border-color);
+}
+
+/* Move the slider knob when toggled */
+input:checked + .slider:before {
+    background-color: var(--link-color);
+}
+
+input {
+    padding: 5px;
+    border: 1px solid var(--square-border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--link-color);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+}
+
+button:hover {
+    background-color: var(--link-hover-color);
+}
+
+/* Game Board Styling */
+.game-container {
+    margin: 20px;
+    text-align: center;
+}
+
+#board {
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    justify-content: center;
+    align-items: stretch;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 5px;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--square-border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.square.correct {
+    background-color: #6AAA64;
+    border-color: #6AAA64;
+    color: white;
+}
+
+.square.present {
+    background-color: #C9B458;
+    border-color: #C9B458;
+    color: white;
+}
+
+.square.absent {
+    background-color: #787C7E;
+    border-color: #787C7E;
+    color: white;
+}
+
+/* Winning Animation */
+@keyframes winAnimation {
+    0%, 100% {
+        transform: scale(1);
+        background-color: #6AAA64;
+    }
+    50% {
+        transform: scale(1.2);
+        background-color: #9ED78A;
+    }
+}
+
+.animate__win {
+    animation: winAnimation 1s ease-in-out infinite alternate;
+}
+
+/* Responsive Styles */
+@media (max-width: 700px) {
+    .logo {
+        max-width: 100px;
+    }
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo {
+        max-width: 80px;
+    }
+    button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Debug Mode Styling */
+.debug-container {
+    position: fixed;
+    left: 30px;
+    top: 20px;
+    background-color: var(--bg-color);
+    border: 2px solid var(--link-color);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    z-index: 1000;
+}
+
+/* Word Display Under Bug Icon */
+.debug-container .debug-word {
+    font-size: 14px;
+    color: var(--text-color);
+    text-align: center;
+    text-transform: uppercase; /* Ensure the word is displayed in uppercase */
+    margin-top: 5px;
+    font-weight: bold; /* Make the word appear more prominent */
+}
+
+/* Checkbox Styling */
+.debug-container input[type="checkbox"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 30px;
+    height: 30px;
+    background-color: var(--used-letters-bg);
+    border: 2px solid var(--link-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* Checked State */
+.debug-container input[type="checkbox"]:checked {
+    background-color: var(--link-color);
+    border-color: var(--link-hover-color);
+}
+
+/* Hover Effect */
+.debug-container input[type="checkbox"]:hover {
+    border-color: var(--link-hover-color);
+}
+
+/* Active State Animation */
+.debug-container input[type="checkbox"]:active {
+    transform: scale(0.95);
+    background-color: var(--link-hover-color);
+}
+
+/* Display the bug icon even when not checked */
+.debug-container label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Bug Icon Styling */
+.debug-icon {
+    font-size: 24px;
+    margin-right: 5px;
+}
