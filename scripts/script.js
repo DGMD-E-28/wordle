@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             body.classList.add('harvard-mode');
             body.classList.remove('dark-mode');
-            themeIcon.innerHTML = `<img src="/assets/harvard.png" alt="Harvard" class="harvard-icon">`;
+            themeIcon.innerHTML = `<img src="../assets/harvard.png" alt="Harvard" class="harvard-icon">`;
         }
     });
 
