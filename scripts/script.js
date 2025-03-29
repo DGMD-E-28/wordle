@@ -1,10 +1,6 @@
-console.log(localStorage);
-console.log(localStorage.getItem('wordleStats'));
-document.addEventListener('DOMContentLoaded', () => {
-    console.log(localStorage);
-});
 // Theme Toggle and Wordle Game Logic
 document.addEventListener('DOMContentLoaded', () => {
+    console.log(localStorage);
     const themeToggle = document.getElementById('theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
     const body = document.body;
@@ -51,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Reset the game state
+// Reset the game state
     async function resetGame() {
         attempts = 0;
         wordToGuess = await fetchRandomWord();
@@ -65,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
         renderBoard();
 
         if (debugMode) {
-            // Removed message display for debug mode
+            debugWordDisplay.innerHTML = `<strong>${wordToGuess.toUpperCase()}</strong>`; // Display new word under the bug icon
+        } else {
+            debugWordDisplay.innerHTML = ""; // Clear debug word display if not in debug mode
         }
     }
 
@@ -162,15 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
     debugWordDisplay.style.marginTop = '5px';
     debugIcon.parentElement.appendChild(debugWordDisplay); // Append the div under the bug icon
 
-    debugCheckbox.addEventListener('change', () => {
+    debugCheckbox.addEventListener('change', async () => {
         debugMode = debugCheckbox.checked;
+
         if (debugMode) {
             debugIcon.innerHTML = "🐞"; // Show bug icon when in debug mode
-            debugWordDisplay.innerHTML = `<strong>${wordToGuess}</strong>`; // Display the word under the bug icon
+            debugWordDisplay.innerHTML = `<strong>${wordToGuess.toUpperCase()}</strong>`; // Display the word under the bug icon
         } else {
             debugWordDisplay.innerHTML = ""; // Clear the word display when debug mode is off
         }
-        resetGame(); // Restart the game to reflect debug mode status
     });
 
     themeToggle.addEventListener('input', () => {
