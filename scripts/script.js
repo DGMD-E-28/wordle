@@ -1,3 +1,8 @@
+console.log(localStorage);
+console.log(localStorage.getItem('wordleStats'));
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(localStorage);
+});
 // Theme Toggle and Wordle Game Logic
 document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
