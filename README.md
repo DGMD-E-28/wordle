@@ -73,4 +73,16 @@ You may use the following technologies:
 - [CSS Styling](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 
+## Project Details
+- **Author:** Elizabeth Koch
+- **Date:** Fri Mar 28, 2025 10:39 PM
+- **Live Deployment URL:** [Wordle Game](https://dgmd-e-28.github.io/wordle/)
+
+### What was the API you used – and why?
+- The API used was the **Random Word API** ([https://random-word-api.herokuapp.com/word?length=5](https://random-word-api.herokuapp.com/word?length=5)).
+- This API was chosen because it provides a simple and straightforward way to fetch random words of a specified length, which is essential for creating new words for the Wordle game. It returns data in JSON format, making it easy to integrate with the JavaScript `fetch()` function.
+
+### What was the most satisfying part of this assignment?
+- The most satisfying part of this assignment was having my family play the game. Seeing them enjoy the interactive gameplay, test the different themes, and laugh while trying to guess the words made all the effort feel worthwhile. It was rewarding to see them engage with the project and appreciate the features I implemented.
+
 Happy Coding! 🎉
